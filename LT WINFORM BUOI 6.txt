@@ -1,0 +1,28 @@
+IDENTITY: tự động tăng dần
+SqlConnection: đối tượng tạo kết nối
+SqlCommand: đối tượng tạo truy vấn
+SqlAdapter: thực thi select 
+
+// Bước 1: Mở kết nối
+conn.open();
+
+// Bước 2: Tạo truy vấn
+SqlCommand cmd=new SqlCommand();
+cmd.CommandText="SELECT * FROM Accounts";
+cmd.Connection=conn;
+
+// Bước 3: Thực thi truy vấn
+SqlDataAdapter adapter=new SqlDataAdapter();
+adapter.SelectCommand=cmd;
+
+// Bước 4: Xử lý kết quả
+DataTable dtb=new DataTable();
+adapter.Fill(dtb);
+dgvAccounts.DataSource = dtb;
+
+// Bước 5: Đóng kết nối
+conn.Close();
+
+
+
+
